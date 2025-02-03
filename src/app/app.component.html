@@ -1,2 +1,9 @@
-<h1>{{ title }}</h1>
-<p>The year is {{ year }}</p>
+<div *ngFor="let person of people">
+  <div *ngIf="person.name">
+    <h3>{{ person.name }}</h3>
+    <p>Age: {{ person.age }}</p>
+    <p>Email: {{ person.email }}</p>
+    <p>Phone: {{ person.phoneNumber }}</p>
+    <p *ngIf="person.address">Address: {{ person.address }}</p>
+  </div>
+</div>
