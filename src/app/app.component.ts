@@ -1,13 +1,19 @@
-import { Person } from './person.interface';  // Import the Person interface
+import { Person } from './person';  // Import the Person interface
 import { Component } from '@angular/core';
+import {NgForOf, NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+  imports: [
+    NgIf,
+    NgForOf
+  ],
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   title: string = 'AmandeepKaurLearningAngular';  // Your title property
+
 
   // Initialize the 'people' array with 6 instances of the 'Person' interface
   people: Person[] = [
