@@ -1,9 +1,8 @@
 <div>
   <table>
     <tbody>
-
-    <tr *ngFor="let person of personList" (click)="selectPerson(person)">
-
+    <tr *ngFor="let person of personList; let i = index" (click)="selectPerson(person)"
+        [ngClass]="{'pink-background': i % 2 == 0, 'teal-background': i % 2 != 0}">
       <td>{{ person.id }}</td>
       <td>{{ person.firstName }}</td>
       <td>{{ person.lastName }}</td>
@@ -13,4 +12,6 @@
     </tr>
     </tbody>
   </table>
+
+  <app-person-list-item [person]="selectedPerson"></app-person-list-item>
 </div>
