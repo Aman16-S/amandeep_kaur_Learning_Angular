@@ -1,13 +1,14 @@
 import { Person } from './person';  // Import the Person interface
 import { Component } from '@angular/core';
 import {NgForOf, NgIf} from '@angular/common';
+import {PersonListComponent} from './person-list/person-list.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   imports: [
-    NgIf,
-    NgForOf
+
+    PersonListComponent
   ],
   styleUrls: ['./app.component.css']
 })

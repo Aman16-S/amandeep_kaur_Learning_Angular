@@ -1,1 +1,17 @@
-<p>person-list-item works!</p>
+
+
+
+
+
+
+
+<div *ngIf="person" class="person-detail">
+  <h2>Student Details</h2>
+  <p><strong>ID:</strong> {{ person.id }}</p>
+  <p><strong>First Name:</strong> {{ person.firstName }}</p>
+  <p><strong>Last Name:</strong> {{ person.lastName }}</p>
+  <p><strong>Age:</strong> {{ person.age }}</p>
+  <p><strong>Email:</strong> {{ person.email }}</p>
+
+  <p><strong>Admin:</strong> {{ person.isAdmin ? 'Yes' : 'No' }}</p>
+</div>
