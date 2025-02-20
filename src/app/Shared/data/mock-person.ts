@@ -1,4 +1,4 @@
-import { Person } from '../Shared/Models/person';
+import { Person } from '../Models/person';
 
 export const MOCK_PERSONS: Person[] = [
   { id: 1, firstName: "John", lastName: "Smith", age: 28, email: "john.smith@example.com", isAdmin: false },
