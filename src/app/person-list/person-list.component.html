@@ -1,5 +1,3 @@
-<app-person-list-item [person]="selectedPerson"></app-person-list-item>
-
 <div class="container">
   <h2>person List</h2>
   <table>
@@ -13,7 +11,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let person of PersonList" (click)="selectPerson(person)">
+    <tr *ngFor="let person of PersonList" [routerLink]="['/persons',person.id ]">
       <td>{{ person.id }}</td>
       <td>{{ person.firstName }}</td>
       <td>{{ person.lastName }}</td>

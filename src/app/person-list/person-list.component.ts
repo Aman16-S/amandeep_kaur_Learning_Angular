@@ -4,16 +4,18 @@ import {Person} from '../Shared/Models/person';
 import {NgForOf} from "@angular/common";
 import {PersonService} from '../services/person.service';
 import {PersonListItemComponent} from '../person-list-item/person-list-item.component';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-Person-list1',
   standalone: true,
   imports: [
     NgForOf,
-    PersonListItemComponent
+    PersonListItemComponent,
+    RouterLink
   ],
   templateUrl: './Person-list.component.html',
-  styleUrl: './Person-list.component.scss'
+  styleUrl: './person-list.component.scss'
 })
 export class PersonListComponent implements OnInit {
   //Placeholder values for the table
@@ -36,26 +38,7 @@ export class PersonListComponent implements OnInit {
   }
   selectedPerson?: Person;
   selectPerson(person: Person): void {
-    this.getPersonById(person.id); // Call getPersonById to fetch the selected person
-    console.log("Selected person: ", person);
+    this.selectedPerson = person
   }
 
-  // Method to fetch a single person by ID using the service
-  getPersonById(id: number): void {
-    this.personService.getPersonById(id).subscribe({
-      next: (person: Person | undefined) => {
-        if (person) {  // Ensure person is not undefined
-          this.selectedPerson = person;
-          console.log("Fetched person: ", person);
-        } else {
-          console.error('Person not found');
-          this.selectedPerson = undefined; // Optional, in case you want to reset the selected person
-        }
-      },
-      error: (err) => console.error("Error fetching person by ID", err),
-      complete: () => console.log("Fetch complete!")
-    });
-  }
-
-  protected readonly personalbar = personalbar;
 }
