@@ -11,7 +11,6 @@ import {RouterLink} from '@angular/router';
   standalone: true,
   imports: [
     NgForOf,
-    PersonListItemComponent,
     RouterLink
   ],
   templateUrl: './Person-list.component.html',

@@ -1,12 +1,15 @@
 import { Person } from './person';  // Import the Person interface
 import { Component } from '@angular/core';
-import {PersonListComponent} from './person-list/person-list.component';
+import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   imports: [
-  PersonListComponent
+    RouterOutlet,
+    RouterLinkActive,
+    RouterLink
+
   ],
   styleUrls: ['./app.component.css']
 })

@@ -40,4 +40,8 @@ export class PersonService {
     const Person = this.persons.find(Person => Person.id === PersonId);
     return of(Person);
   }
+  // New method to generate a new unique ID
+  generateNewId(): number {
+    return this.persons.length > 0 ? Math.max(...this.persons.map(person => person.id)) + 1 : 1;
+  }
 }
