@@ -33,4 +33,12 @@ export class PersonListComponent implements OnInit {
     this.selectedPerson = person;
   }
 
+  editPerson(id: number) {
+    this.router.navigate(['/persons', id]);
+  }
+
+  deletePerson(id: number) {
+    this.personService.deletePerson(id);
+    this.PersonList = this.PersonList.filter(person => person.id !== id);
+  }
 }
