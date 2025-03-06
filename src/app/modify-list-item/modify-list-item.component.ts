@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-
 import {Person} from '../Shared/Models/person';
 import {PersonService} from '../services/person.service';
-import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {CommonModule} from '@angular/common';
 
@@ -12,16 +11,14 @@ import {CommonModule} from '@angular/common';
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule,
     ReactiveFormsModule
   ],
   templateUrl: './modify-list-item.component.html',
   styleUrl: './modify-list-item.component.css'
 })
-export class ModifyPersonComponent implements OnInit{
+export class ModifyPersonComponent implements OnInit {
   personForm1: FormGroup;
-  person: Person | undefined;
-
+  person: Person | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -30,51 +27,48 @@ export class ModifyPersonComponent implements OnInit{
     private router: Router
   ) {
     this.personForm1 = this.fb.group({
-      id: ['', Validators.required], // ID is required
-      firstName: ['', Validators.required], // First name is required
-      lastName: ['', Validators.required], // Last name is required
-      age: ['', [Validators.required, Validators.min(1)]], // Age is required and must be positive
-      email: ['', [Validators.required, Validators.email]], // Email is required and must be valid
-      isAdmin: [false] // Optional field, default is false
+      id: [''],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      age: ['', [Validators.required, Validators.min(1)]],
+      email: ['', [Validators.required, Validators.email]],
+      isAdmin: [false]
     });
   }
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.personService.getPersonById(+id).subscribe(person => {
-        if(person) {
-          this.person = person;
-
-          this.personForm1.patchValue(person);
+      this.personService.getPersons().subscribe(persons => {
+        const foundPerson = persons.find(p => p.id === +id);
+        if (foundPerson) {
+          this.person = foundPerson;
+          this.personForm1.patchValue(foundPerson);
         }
       });
     }
   }
 
   onSubmit(): void {
-    const person: Person = this.personForm1.value;
+    if (this.personForm1.valid) {
+      const person: Person = this.personForm1.value;
+      if (this.person) {
+        this.personService.updatePerson(person);
+      } else {
+        person.id = this.personService.generateNewId();
 
-    // Check if we're updating an existing person
-    if (person.id) {
-      this.personService.updatePerson(person);
-    } else {
-      // For adding a new person, generate a new ID
-      const newId = this.personService.generateNewId(); // This method will create a new ID
-      person.id = newId;
-      this.personService.addPerson(person);
-    }
-
-    this.router.navigate(['/persons']);
-  }
-
-  onDelete(): void {
-    const id = this.personForm1.get('id')?.value;
-    if (id) {
-      this.personService.deletePerson(id);
+        this.personService.addPerson(person);
+      }
       this.router.navigate(['/persons']);
     }
   }
+
+  // onDelete(): void {
+  //   const id = this.personForm1.get('id')?.value;
+  //   if (id) {
+  //     this.personService.deletePerson(id).subscribe(() => this.router.navigate(['/persons']));
+  //   }
+  // }
 
   navigateTopersonList(): void {
     this.router.navigate(['/persons']);

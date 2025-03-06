@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>person List</h2>
+  <h2>Person List</h2>
   <table>
     <thead>
     <tr>
@@ -8,17 +8,21 @@
       <th>Last Name</th>
       <th>Age</th>
       <th>Admin</th>
+      <th>Actions</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let person of PersonList" [routerLink]="['/persons',person.id ]">
+    <tr *ngFor="let person of PersonList">
       <td>{{ person.id }}</td>
       <td>{{ person.firstName }}</td>
       <td>{{ person.lastName }}</td>
       <td>{{ person.age }}</td>
       <td>{{ person.isAdmin ? 'Yes' : 'No' }}</td>
+      <td>
+        <button (click)="editPerson(person.id)">Edit</button>
+        <button (click)="deletePerson(person.id)">Delete</button>
+      </td>
     </tr>
     </tbody>
   </table>
-
 </div>
