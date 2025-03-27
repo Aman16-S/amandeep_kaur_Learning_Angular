@@ -1,8 +1,7 @@
 import { Person } from '../Models/person';
 
 export const MOCK_PERSONS: Person[] = [
-  { id: 1, firstName: "John", lastName: "Smith", age: 28, email: "john.smith@example.com", isAdmin: false },
-  { id: 2, firstName: "Sara", lastName: "Lee", age: 35, email: "sara.lee@example.com", isAdmin: true },
-  { id: 3, firstName: "Michael", lastName: "Johnson", age: 40, email: "michael.johnson@example.com", isAdmin: false },
-  { id: 4, firstName: "Emma", lastName: "Brown", age: 22, email: "emma.brown@example.com", isAdmin: true }
+  { id: 1, firstName: 'John', lastName: 'Doe', age: 28, email: 'john@example.com', dateOfBirth: new Date('1997-05-20'), salary: 50000 },
+  { id: 2, firstName: 'Jane', lastName: 'Smith', age: 34, email: 'jane@example.com', dateOfBirth: new Date('1991-08-14'), salary: 60000 },
+  { id: 3, firstName: 'Sam', lastName: 'Brown', age: 22, email: 'sam@example.com', dateOfBirth: new Date('2003-03-10'), salary: 45000 }
 ];

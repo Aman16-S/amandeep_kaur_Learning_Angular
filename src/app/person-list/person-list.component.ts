@@ -1,14 +1,22 @@
 import {Component, OnInit} from '@angular/core';
 import {Person} from '../Shared/Models/person';
-import {NgForOf} from "@angular/common";
+import {CurrencyPipe, NgForOf} from "@angular/common";
 import {PersonService} from '../services/person.service';
 import {Router} from '@angular/router';
+import {UpperCasePipePipe} from '../pipes/upper-case-pipe.pipe';
+import {DatePipePipe} from '../pipes/date-pipe.pipe';
+import {CurrencyPipePipe} from '../pipes/currency-pipe.pipe';
+import {FullNamePipe} from '../pipes/full-name.pipe';
 
 @Component({
   selector: 'app-Person-list1',
   standalone: true,
   imports: [
     NgForOf,
+    UpperCasePipePipe,
+    DatePipePipe,
+    CurrencyPipePipe,
+    FullNamePipe,
   ],
   templateUrl: './Person-list.component.html',
   styleUrl: './person-list.component.scss'
