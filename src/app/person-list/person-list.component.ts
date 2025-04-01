@@ -7,6 +7,7 @@ import {UpperCasePipePipe} from '../pipes/upper-case-pipe.pipe';
 import {DatePipePipe} from '../pipes/date-pipe.pipe';
 import {CurrencyPipePipe} from '../pipes/currency-pipe.pipe';
 import {FullNamePipe} from '../pipes/full-name.pipe';
+import {HoverHighlightDirective} from '../directives/hover-highlight.directive';
 
 @Component({
   selector: 'app-Person-list1',
@@ -17,6 +18,7 @@ import {FullNamePipe} from '../pipes/full-name.pipe';
     DatePipePipe,
     CurrencyPipePipe,
     FullNamePipe,
+    HoverHighlightDirective,
   ],
   templateUrl: './Person-list.component.html',
   styleUrl: './person-list.component.scss'
