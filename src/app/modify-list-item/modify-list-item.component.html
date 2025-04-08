@@ -1,0 +1,46 @@
+<form [formGroup]="personForm1" (ngSubmit)="onSubmit()">
+  <!-- ID Field -->
+  <div class="form-group">
+    <label for="id">ID</label>
+    <input type="number" id="id" formControlName="id" />
+  </div>
+
+  <!-- First Name Field -->
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName" formControlName="firstName" />
+  </div>
+
+  <!-- Last Name Field -->
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName" formControlName="lastName" />
+  </div>
+
+  <!-- Age Field -->
+  <div class="form-group">
+    <label for="age">Age</label>
+    <input type="number" id="age" formControlName="age" />
+  </div>
+
+  <!-- Email Field -->
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" id="email" formControlName="email" />
+  </div>
+
+  <!-- Is Admin Checkbox -->
+  <div class="form-group">
+    <label for="isAdmin">Is Admin</label>
+    <input type="checkbox" id="isAdmin" formControlName="isAdmin" />
+  </div>
+
+  <!-- Submit Button (Add or Update) -->
+  <button type="submit">Submit</button>
+
+<!--  &lt;!&ndash; Delete Button &ndash;&gt;-->
+<!--  <button type="button" (click)="onDelete()">Delete</button>-->
+
+  <!-- Back Button -->
+  <button type="button" (click)="navigateTopersonList()">Back to List</button>
+</form>

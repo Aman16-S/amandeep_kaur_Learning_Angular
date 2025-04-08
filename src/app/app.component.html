@@ -1,2 +1,18 @@
-<h1>{{ title }}</h1>
-<p>The year is {{ year }}</p>
+<!-- Future Nav bar-->
+<div class="nav-bar">
+  <nav>
+    <a routerLink="/persons" routerLinkActive="active">person List</a><br>
+    <a routerLink="/modify-person" routerLinkActive="active">Modify person</a>
+  </nav>
+</div>
+
+<div class="app-container">
+  <h1>{{ title }}</h1>
+  <!-- Add the input field with the custom directive -->
+  <input type="text" appHighlightOnFocus highlightColor="'orange'" placeholder="Enter text">
+
+  <!--router outlet to display routed components -->
+  <router-outlet></router-outlet>
+</div>
+
+

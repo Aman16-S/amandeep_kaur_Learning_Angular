@@ -1,0 +1,32 @@
+<div class="container">
+  <h2>Person List</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Full Name</th>
+      <th>First Name (Uppercase)</th>
+      <th>Age</th>
+      <th>Admin</th>
+      <th>Date of Birth</th>
+      <th>Salary</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let person of PersonList" appHoverHighlight [appHoverHighlight]="'lightblue'">
+      <td>{{ person.id }}</td>
+      <td>{{ person | fullName }}</td>
+      <td>{{ person.firstName | upperCasePipe }}</td>
+      <td>{{ person.age }}</td>
+      <td>{{ person.isAdmin ? 'Yes' : 'No' }}</td>
+      <td>{{ person.dateOfBirth | datePipe:'dd/MM/yyyy' }}</td>
+      <td>{{ person.salary | currencyPipe }}</td>
+      <td>
+        <button (click)="editPerson(person.id)">Edit</button>
+        <button (click)="deletePerson(person.id)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
